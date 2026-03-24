@@ -1,69 +1,81 @@
-# 🚗 AckoDrive New Car Scraper – Mahindra (Delhi)
-A mini-project built as part of our internship to scrape Mahindra car details from the AckoDrive website.  
-Since AckoDrive does not support used cars and the Mumbai location data was not available,  
-we continued the project using the **Delhi location**, which successfully provided complete data.
+# 🚗 AckoDrive Mahindra Car Scraper
+
+![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python)
+![BeautifulSoup](https://img.shields.io/badge/BeautifulSoup-4-brightgreen?style=flat-square)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Processing-150458?style=flat-square&logo=pandas)
+![Platform](https://img.shields.io/badge/Platform-Jupyter%20Notebook-orange?style=flat-square&logo=jupyter)
+![License](https://img.shields.io/badge/License-Academic%20Use-lightgrey?style=flat-square)
+
+> Scrape, clean, and export Mahindra car listings from the AckoDrive website using BeautifulSoup — built as part of an internship mini-project.
 
 ---
 
-## 📌 Project Overview
-This project collects data of **15 Mahindra car models** from the AckoDrive website.  
-As the site lists only **new cars**, attributes such as Year, KM Driven, and Owners were not available and were excluded.
+## 📌 Overview
 
-We extracted:
-- Car Name  
-- Fuel Type  
-- Transmission  
-- Price Label  
-- Price Range  
-- Variants  
+This project collects structured data on **15 Mahindra car models** listed on [AckoDrive](https://www.ackodrive.com), a new-car marketplace. Since AckoDrive lists only new cars, used-car attributes (Year, KM Driven, Owners) were not available and are excluded from the dataset.
 
-The scraped HTML was processed using **BeautifulSoup**, cleaned, structured into a DataFrame, and exported for analysis.
+> 📍 **Note on Location:** Mumbai location data failed to load on AckoDrive — selecting Mumbai did not change the URL or class names, so the scraper defaulted to **Delhi**, which provided complete and consistent data.
 
 ---
 
-## 📁 Files in This Repository
-- `TeamE_Minor_Project_IPYNB.ipynb` – Main project notebook  
-- `raw_ackodrive.html` – Raw HTML extracted during scraping  
-- `AckoDrive_Mahindra_Car.csv` – Mahindra Car CSV file
-- `README.md` – Project documentation  
+## 📂 Repository Structure
 
----
-
-## 🧠 Technologies Used
-- Python  
-- BeautifulSoup (for parsing)  
-- Requests (for fetching HTML)  
-- Pandas (for cleaning & structuring data)  
-- Jupyter Notebook  
+```
+📦 ackodrive-mahindra-scraper
+ ┣ 📓 TeamE_Minor_Project_IPYNB.ipynb   ← Main scraping & analysis notebook
+ ┣ 🌐 raw_ackodrive.html                ← Raw HTML fetched during scraping
+ ┣ 📊 AckoDrive_Mahindra_Car.csv        ← Final cleaned dataset
+ ┗ 📄 README.md                         ← Project documentation
+```
 
 ---
 
 ## 🔍 Data Collected
-| Attribute        | Description |
-|------------------|-------------|
-| Car Name         | Name of the Mahindra model |
-| Fuel Type        | Petrol / Diesel |
-| Transmission     | Manual / Automatic |
-| Price Label      | Location-based pricing info |
-| Price Range      | Minimum & maximum on-road price |
-| Variants         | Total variants offered |
+
+| Attribute | Description |
+|---|---|
+| **Car Name** | Name of the Mahindra model |
+| **Fuel Type** | Petrol / Diesel |
+| **Transmission** | Manual / Automatic |
+| **Price Label** | Location-based pricing info |
+| **Price Range** | Minimum & maximum on-road price |
+| **Variants** | Total number of variants offered |
+
+> ❌ Fields like **Year**, **KM Driven**, and **Owners** were unavailable — AckoDrive lists new cars only.
 
 ---
 
-## ⚠️ Issues Faced
-- **Mumbai location** data did not load on AckoDrive.  
-  Even after selecting Mumbai on the site,  
-  **URL did not change** and **class names remained the same**, so data stayed Delhi-based.
+## ⚙️ Workflow
 
-- AckoDrive shows only **new cars**, so used car fields like:
-  - Year  
-  - KM Driven  
-  - Owners  
-  were unavailable.
+```
+1. Fetch page HTML using Requests
+2. Parse HTML with BeautifulSoup
+3. Extract car attributes (name, fuel, transmission, price, variants)
+4. Clean and structure data into a Pandas DataFrame
+5. Export final dataset as CSV
+```
 
-- Some class names were dynamic and required manual inspection.
+---
 
-Despite these, we extracted all 15 Mahindra cars available.
+## 🛠️ Technologies Used
+
+| Tool | Purpose |
+|---|---|
+| Python 3.8+ | Core language |
+| BeautifulSoup 4 | HTML parsing & data extraction |
+| Requests | Fetching raw HTML from AckoDrive |
+| Pandas | Data cleaning & structuring |
+| Jupyter Notebook | Development environment |
+
+---
+
+## ⚠️ Challenges
+
+- **Mumbai location unavailable** — AckoDrive's URL and class names did not update upon selecting Mumbai, so Delhi was used as the working location instead.
+- **New cars only** — Used car fields (Year, KM Driven, Owners) were absent from all listings.
+- **Dynamic class names** — Some HTML class names required manual inspection via browser DevTools to identify correctly.
+
+Despite these, all **15 Mahindra car models** were successfully extracted.
 
 ---
 
@@ -71,31 +83,42 @@ Despite these, we extracted all 15 Mahindra cars available.
 
 1. **Clone the repository:**
    ```bash
-     git clone https://github.com/your-repo-url
-    ```
-3.  **Navigate to the project folder:**
-    ```bash
-    cd your-folder
-    ```
-3. **Open the notebook:**
-    ```bash
-    jupyter notebook
-    ```
-4.**Run all cells to scrape, clean, and export the dataset.**
-   
+   git clone https://github.com/your-repo-url
+   ```
+
+2. **Navigate to the project folder:**
+   ```bash
+   cd ackodrive-mahindra-scraper
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install requests beautifulsoup4 pandas
+   ```
+
+4. **Open the notebook:**
+   ```bash
+   jupyter notebook TeamE_Minor_Project_IPYNB.ipynb
+   ```
+
+5. **Run all cells** to scrape, clean, and export the dataset.
 
 ---
 
 ## 👥 Team Members
-1. Sai Surya
-2. Aastha Das
-3. Priyanshu Prakash Sharma
-4. Hima Sajeesh Kumar
-5. Vansh Bharadwaj
-6. T J John
-7. Vivek Salimath
 
+| # | Name |
+|---|---|
+| 1 | Sai Surya |
+| 2 | Aastha Das |
+| 3 | Priyanshu Prakash Sharma |
+| 4 | Hima Sajeesh Kumar |
+| 5 | Vansh Bharadwaj |
+| 6 | T J John |
+| 7 | Vivek Salimath |
 
 ---
+
 ## 📄 License
-This project is for educational and academic purposes only.
+
+This project is intended for **educational and academic purposes only**.
